@@ -1,0 +1,52 @@
+
+  blockscout:
+    restart: unless-stopped
+    image: blockscout/blockscout-xdai:3.7.4-pre-9
+    ports:
+      - 4000:4000
+    environment:
+      - ETHEREUM_JSONRPC_VARIANT=geth
+      - ETHEREUM_JSONRPC_HTTP_URL=http://91.210.37.218:38545
+      - ETHEREUM_JSONRPC_WS_URL=ws://91.210.37.218:38546
+      - COIN=EXL
+      - NETWORK=EXL
+      - COINGECKO_COIN_ID=stellar
+      - SUBNETWORK=EXL
+      - BLOCKSCOUT_HOST=exlscan.com
+      - NETWORK_ICON=/images/exl_logo.svg
+      - LOGO=/images/exl_logo.svg
+      - LOGO_FOOTER=/images/exl_logo.svg
+      - LOGO_TEXT=Excoincial
+      - EXTERNAL_APPS=[{"title":"Excoincial Exchange","url":"https://excoincial.co/"}]
+      - FAUCET_COIN=EXL
+      - FAUCET_JSONRPC_HTTP_URL=http://91.210.37.218:38545
+      - ENABLE_FAUCET=false
+      - CHAIN_ID=74
+      - DATABASE_URL=ecto://postgres:1234qwer@postgresql:5432/exl?ssl=false
+    links:
+      - postgresql
+    volumes:
+      - ../data/blockscout/docker/blockscout-web-assets-css-theme/_exl_variables-non-critical.scss:/opt/app/apps/block_scout_web/assets/css/theme/_exl_variables-non-critical.scss
+      - ../data/blockscout/docker/blockscout-web-assets-css-theme/_exl_variables.scss:/opt/app/apps/block_scout_web/assets/css/theme/_exl_variables.scss
+      - ../data/blockscout/docker/blockscout-web-assets-css-theme/_variables.scss:/opt/app/apps/block_scout_web/assets/css/theme/_variables.scss
+      - ../data/blockscout/docker/blockscout-web-assets-static-images/exl_logo.svg:/opt/app/apps/block_scout_web/assets/static/images/exl_logo.svg
+      - ../data/blockscout/docker/blockscout-web-assets-static-images/exl_logo.svg.gz:/opt/app/apps/block_scout_web/assets/static/images/exl_logo.svg.gz
+      - ../data/blockscout/docker/blockscout-web-priv-gettext/default.pot:/opt/app/apps/block_scout_web/priv/gettext/default.pot
+      - ../data/blockscout/docker/blockscout-web-priv-gettext/en/LC_MESSAGES/default.po:/opt/app/apps/block_scout_web/priv/gettext/en/LC_MESSAGES/default.po
+      - ../data/blockscout/docker/blockscout-web-lib-blockscout-web/views/layout_view.ex:/opt/app/apps/block_scout_web/lib/block_scout_web/views/layout_view.ex
+      - ../data/blockscout/docker/blockscout-web-lib-blockscout-web/controllers/api/v1/health_controller.ex:/opt/app/apps/block_scout_web/lib/block_scout_web/controllers/api/v1/health_controller.ex
+      - ../data/blockscout/docker/blockscout-web-lib-blockscout-web/controllers/address_contract_verification_controller.ex:/opt/app/apps/block_scout_web/lib/block_scout_web/controllers/address_contract_verification_controller.ex
+      - ../data/blockscout/docker/blockscout-web-lib-blockscout-web/controllers/faucet_controller.ex:/opt/app/apps/block_scout_web/lib/block_scout_web/controllers/faucet_controller.ex
+      - ../data/blockscout/docker/blockscout-web-lib-blockscout-web/templates/api_docs/_metatags.html.eex:/opt/app/apps/block_scout_web/lib/block_scout_web/templates/api_docs/_metatags.html.eex
+      - ../data/blockscout/docker/blockscout-web-lib-blockscout-web/templates/api_docs/index.html.eex:/opt/app/apps/block_scout_web/lib/block_scout_web/templates/api_docs/index.html.eex
+      - ../data/blockscout/docker/blockscout-web-lib-blockscout-web/templates/api_docs/eth_rpc.html.eex:/opt/app/apps/block_scout_web/lib/block_scout_web/templates/api_docs/eth_rpc.html.eex
+      - ../data/blockscout/docker/blockscout-web-lib-blockscout-web/templates/address_contract_verification/new.html.eex:/opt/app/apps/block_scout_web/lib/block_scout_web/templates/address_contract_verification/new.html.eex
+      - ../data/blockscout/docker/blockscout-web-lib-blockscout-web/templates/chain/_metatags.html.eex:/opt/app/apps/block_scout_web/lib/block_scout_web/templates/chain/_metatags.html.eex
+      - ../data/blockscout/docker/blockscout-web-lib-blockscout-web/templates/layout/_footer.html.eex:/opt/app/apps/block_scout_web/lib/block_scout_web/templates/layout/_footer.html.eex
+      - ../data/blockscout/docker/blockscout-web-lib-blockscout-web/templates/layout/_default_title.html.eex:/opt/app/apps/block_scout_web/lib/block_scout_web/templates/layout/_default_title.html.eex
+      - ../data/blockscout/docker/blockscout-web-lib-blockscout-web/templates/admin/setup/verify.html.eex:/opt/app/apps/block_scout_web/lib/block_scout_web/templates/admin/setup/verify.html.eex
+      - ../data/blockscout/docker/blockscout-web-lib-blockscout-web/templates/address_contract/index.html.eex:/opt/app/apps/block_scout_web/lib/block_scout_web/templates/address_contract/index.html.eex
+      - ../data/blockscout/docker/blockscout-web-lib-blockscout-web/templates/stakes/_metatags.html.eex:/opt/app/apps/block_scout_web/lib/block_scout_web/templates/stakes/_metatags.html.eex
+      - ../data/blockscout/docker/blockscout-web-lib-blockscout-web/templates/tokens/overview/_metatags.html.eex:/opt/app/apps/block_scout_web/lib/block_scout_web/templates/tokens/overview/_metatags.html.eex
+      - ../data/blockscout/docker/blockscout-web-lib-blockscout-web/templates/smart_contract/_functions.html.eex:/opt/app/apps/block_scout_web/lib/block_scout_web/templates/smart_contract/_functions.html.eex
+      - ../data/blockscout/docker/blockscout-web-lib-blockscout-web/templates/page_not_found/index.html.eex:/opt/app/apps/block_scout_web/lib/block_scout_web/templates/page_not_found/index.html.eex

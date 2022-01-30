@@ -1,0 +1,3 @@
+<title>
+  <%= gettext("%{subnetwork} Explorer - Exlscan", subnetwork: subnetwork_title()) %>
+</title>
