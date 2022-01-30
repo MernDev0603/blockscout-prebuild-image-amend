@@ -1,4 +1,6 @@
+version: '3.5'
 
+services:
   blockscout:
     restart: unless-stopped
     image: blockscout/blockscout-xdai:3.7.4-pre-9

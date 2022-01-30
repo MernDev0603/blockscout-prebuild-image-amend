@@ -19,7 +19,7 @@ cd blockscout-prebuild-image-amend
 docker-compose up -d
 </pre>
 
-4. check the assets that were replaced by means of mapping in compose/app.yml file -> services -> blockscout -> volumes
+4. check the assets that were replaced by means of mapping in compose/app.yaml file -> services -> blockscout -> volumes
 
 ### report the issues to github repository https://github.com/excoincial-blockchain/blockscout-prebuild-image-amend
 ### do your best to create a docker build image source codes rather than keeping the concept of mapped assets to prebuilt image
