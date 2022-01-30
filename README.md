@@ -2,7 +2,9 @@
 
 requirements:
 - ability to install and use docker and docker-compose on local
-- basic 
+- basic Elixir
+- EVM blockchains experience
+- Docker and Docker Compose
 
 1. install docker and docker-compose
 
